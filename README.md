@@ -77,7 +77,7 @@ def one_hot_label(img):
     return ohl
 ```
 
-
+Next, we will resize and apply grayscale to our images. We choose to resize to 28*28 pixels.
 
 
 
