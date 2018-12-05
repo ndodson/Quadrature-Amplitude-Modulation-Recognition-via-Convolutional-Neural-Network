@@ -15,9 +15,11 @@ Amplitude modulation is a technique used in communications engineering to transm
 
 There are many different versions of QAM that are widely used in digital communication. Some of the most widely used are 4qam(or qpsk), 16qam, and 64qam. These numerical prefixes represent the number of constellation points in a constellation diagram like below. 
 
+<p align="center">
+  <img width="460" height="300" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/16qam.75.png">
+</p>
 
 
-![alt text](https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/16qam.75.png)
 
 
 
