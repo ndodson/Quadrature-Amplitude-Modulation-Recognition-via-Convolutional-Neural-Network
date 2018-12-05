@@ -46,5 +46,11 @@ The symbol represents the state of the waveform for a fixed period. In the 16qam
 This is an example of a signal with low signal to noise ratio. As you can see, there is a lot of interference and it is difficult to tell the modulation scheme used. For this reason, the higher order methods are typically used when we know there is a high signal to noise ratio, resulting in less interference.
 
 
+# Why do we care about constellation diagrams?
+
+Constellation diagrams are important because they provide signal performance metrics of a communication system in a simple image. From the diagram, we can form an understanding of the modulation scheme, SINR, and signal preformance flaws. This data is conventionally analyized by an RF engineer, but in the development of intelligent systems and the software defined radio(SDR), we would like to automate this process for a real-time system.
+
+
+
 
 
