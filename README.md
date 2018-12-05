@@ -59,7 +59,7 @@ Through our implementation, we hope to accurately predict the modulation scheme 
 
 Our data consists of 5,000 images of 4qam, 8qam, 16qam, 32qam, and 64qam consatellations. These constellations have SINR ranging from 10db to 30db. we will use one-hot-encoding to represent our data numerically. 
 
-```
+```python
 
 def one_hot_label(img):
     global ohl
