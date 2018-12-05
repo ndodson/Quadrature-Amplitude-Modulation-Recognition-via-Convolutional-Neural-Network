@@ -75,8 +75,9 @@ def one_hot_label(img):
     elif label == '64qam':
         ohl = np.array([1,0,0,0,0])
     return ohl
-    
-    ```
+```
+
+
 
 
 
