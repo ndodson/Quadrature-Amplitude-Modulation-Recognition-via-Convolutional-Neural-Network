@@ -15,7 +15,23 @@ Amplitude modulation is a technique used in communications engineering to transm
 
 There are many different versions of QAM that are widely used in digital communication. Some of the most widely used are 4qam(or qpsk), 16qam, and 64qam. These numerical prefixes represent the number of constellation points in a constellation diagram like below. 
 
+
+
 ![alt text](https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/16qam.75.png)
 
 
-The symbol represents the state of the waveform for a fixed period. In the 16qam example, the number of bits per symbol is 4, as the points in each quadrant can be grouped into fours. The advantage of representing more sybols per bit is that there are more points within the constellation, making it possible to transmit more bits per symbol. This greatly increases the efficiency of transmission for communications systems. The downside of the higher order schemes is that the points in the constellation are closer together, making them more succestable to noise and cross-talk. For this reason, the higher order methods are typically used when we know there is a high signal to noise ratio.
+
+
+The symbol represents the state of the waveform for a fixed period. In the 16qam example, the number of bits per symbol is 4, as the points in each quadrant can be grouped into fours. The advantage of higher bits per symbol is that there are more points within the constellation, making it possible to transmit more bits through the pipeline. This greatly increases the efficiency of transmission for communications systems. The downside of the higher order schemes is that the points in the constellation are closer together, making them more succestable to noise and cross-talk. 
+
+
+
+![alt text](https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/64qam.7.png)
+ 
+
+
+This is an example of a signal with low signal to noise ratio. As you can see, there is a lot of interference and it is difficult to tell the modulation scheme used. For this reason, the higher order methods are typically used when we know there is a high signal to noise ratio, resulting in less interference.
+
+
+
+
