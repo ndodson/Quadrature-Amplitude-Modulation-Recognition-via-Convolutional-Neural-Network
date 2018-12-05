@@ -48,7 +48,34 @@ This is an example of a signal with low signal to noise ratio. As you can see, t
 
 # Why do we care about constellation diagrams?
 
-Constellation diagrams are important because they provide signal performance metrics of a communication system in a simple image. From the diagram, we can form an understanding of the modulation scheme, SINR, and signal preformance flaws. This data is conventionally analyized by an RF engineer, but in the development of intelligent systems and the software defined radio(SDR), we would like to automate this process for a real-time system.
+Constellation diagrams are important because they provide signal performance metrics of a communication system in a simple image. From the diagram, we can form an understanding of the modulation scheme, SINR, and signal preformance flaws. This data is conventionally analyized by an RF engineer, but in the development of intelligent systems and the software defined radio(SDR), we would like to automate this process for a real-time system. We will achieve this with a convolutional neural network.
+
+# Goals
+
+Through our implementation, we hope to accurately predict the modulation scheme used for low SINR constellations. 
+
+
+# Dataset
+
+Our data consists of 5,000 images of 4qam, 8qam, 16qam, 32qam, and 64qam consatellations. These constellations have SINR ranging from 10db to 30db. we will use one-hot-encoding to represent our data numerically. 
+
+'''
+def one_hot_label(img):
+    global ohl
+    label = img.split('.')[0]
+    if label == '4qam':
+        ohl = np.array([0,0,0,0,1])
+    elif label == '8qam':
+        ohl = np.array([0,0,0,1,0])
+    elif label == '16qam':
+        ohl = np.array([0,0,1,0,0])
+    elif label == '32qam':
+        ohl = np.array([0,1,0,0,0])
+    elif label == '64qam':
+        ohl = np.array([1,0,0,0,0])
+    return ohl
+    
+'''
 
 
 
