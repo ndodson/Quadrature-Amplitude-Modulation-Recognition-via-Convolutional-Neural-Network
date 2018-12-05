@@ -13,7 +13,11 @@ Amplitude modulation is a technique used in communications engineering to transm
 
 
 
+# Constellations
+
 There are many different versions of QAM that are widely used in digital communication. Some of the most widely used are 4qam(or qpsk), 16qam, and 64qam. These numerical prefixes represent the number of constellation points in a constellation diagram like below. 
+
+
 
 <p align="center">
   <img width="460" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/16qam.75.png">
@@ -21,10 +25,11 @@ There are many different versions of QAM that are widely used in digital communi
 
 
 
-
-
+# Interference
 
 The symbol represents the state of the waveform for a fixed period. In the 16qam example, the number of bits per symbol is 4, as the points in each quadrant can be grouped into fours. The advantage of higher bits per symbol is that there are more points within the constellation, making it possible to transmit more bits through the pipeline. This greatly increases the efficiency of transmission for communications systems. The downside of the higher order schemes is that the points in the constellation are closer together, making them more succestable to noise and cross-talk. 
+
+
 
 
 
