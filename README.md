@@ -95,6 +95,8 @@ For this model, we have 3 convolutional layers and 3 pooling layers. We use a ke
 # Results
 
 
+
+
 <p align="center">
   <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/10epochs_acc.png">
 </p>
@@ -103,6 +105,9 @@ For this model, we have 3 convolutional layers and 3 pooling layers. We use a ke
   <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/10epochs_loss.png">
 </p>
 
+<p align="center">
+  <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/overfitting_10epochs.png">
+</p>
 
 # Conclusion
 
