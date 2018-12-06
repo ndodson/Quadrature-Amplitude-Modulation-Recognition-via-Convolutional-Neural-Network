@@ -98,7 +98,7 @@ For this model, we have 3 convolutional layers and 3 pooling layers. We use a ke
 
 
 <p align="center">
-  <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/10epochs_acc.png">
+  <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/10epohcs_acc.png">
 </p>
 
 <p align="center">
