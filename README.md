@@ -54,9 +54,6 @@ Constellation diagrams are important because they provide signal performance met
 
 Through our implementation, we hope to accurately predict the modulation scheme used for low SINR constellations. Some of examples can be seen below. If possible, we would also like to train the model in as few epochs as possible and without a GPU, in order to simulate a real-time system without expensive hardware.
 
-<p align="left">
-  <img width="460" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/64qam.9.png">
-</p>
 
 
 
