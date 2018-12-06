@@ -79,20 +79,13 @@ def one_hot_label(img):
 
 # Network Topology
 
-For this model, we have 3 convolutional layers and 3 pooling layers. We use a kernel size of 5 and stride of 1. The code for our layers is below.
-
-```python
-model.add(InputLayer(input_shape=[64,64,1]))
-model.add(Conv2D(filters=32,kernel_size=5,strides=1,padding='same',activation='relu'))
-model.add(MaxPool2D(pool_size=5,padding='same'))
-
-model.add(Conv2D(filters=50,kernel_size=5,strides=1,padding='same',activation='relu'))
-model.add(MaxPool2D(pool_size=5,padding='same'))
+For this model, we have 3 convolutional layers and 3 pooling layers. We use a kernel size of 5 and stride of 1. The tensorboard visualization for our network is below.
 
 
-model.add(Conv2D(filters=80,kernel_size=5,strides=1,padding='same',activation='relu'))
-model.add(MaxPool2D(pool_size=5,padding='same'))
-```
+
+<p align="center">
+  <img width="460" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/network_topology.png">
+</p>
 
 
 
