@@ -20,7 +20,7 @@ There are many different versions of QAM that are widely used in digital communi
 
 
 <p align="center">
-  <img width="460" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/16qam.75.png">
+  <img width="460" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/4qam.9.png">
 </p>
 
 
