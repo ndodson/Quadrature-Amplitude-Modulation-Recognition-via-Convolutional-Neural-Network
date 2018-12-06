@@ -110,13 +110,13 @@ Below is a mesure of the training loss after 10 epochs...
 Below, we can see that for 10 epochs and 100% training accuracy, testing accuracy is 95%. This is due to overfitting from too many iterations. 
 
 <p align="center">
-  <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/overfitting_10epohcs.png">
+  <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/overfitting_10epochs.png">
 </p>
 
 Below is the result of 4 passes through the network and 100% testing accuracy. 
 
 <p align="center">
-  <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/overfitting_10_epochs.png">
+  <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/100%25_test_acc.png">
 </p>
 
  
