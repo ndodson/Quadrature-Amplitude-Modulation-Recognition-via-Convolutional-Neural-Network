@@ -52,12 +52,17 @@ Constellation diagrams are important because they provide signal performance met
 
 # Goals
 
-Through our implementation, we hope to accurately predict the modulation scheme used for low SINR constellations. 
+Through our implementation, we hope to accurately predict the modulation scheme used for low SINR constellations. Some of examples can be seen below. If possible, we would also like to train the model in as few epochs as possible and without a GPU, in order to simulate a real-time system without expensive hardware.
+
+<p align="left">
+  <img width="460" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/64qam.9.png">
+</p>
+
 
 
 # Dataset
 
-Our data consists of 5,000 images of 4qam, 8qam, 16qam, 32qam, and 64qam consatellations. These constellations have SINR ranging from 10db to 30db. we will use one-hot-encoding to represent our data numerically. Then, we will resize and apply grayscale to our images. I chose to resize the images to 64*64. 
+Our data consists of 5,000 images of 4qam, 8qam, 16qam, 32qam, and 64qam consatellations. Due to lack of abundant image data, the size of the dataset was increased by augmenting images. The operations used were rotations, shears, horizontal/vertical flips, noise, and blur. These constellations have SINR ranging from 10db to 30db. we will use one-hot-encoding to represent our data numerically. Then, we will resize and apply grayscale to our images. I chose to resize the images to 64*64.  
 
 ```python
 
@@ -86,6 +91,8 @@ For this model, we have 3 convolutional layers and 3 pooling layers. We use a ke
 <p align="center">
   <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/network_topology.png">
 </p>
+
+
 
 
 
