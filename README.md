@@ -95,19 +95,30 @@ For this model, we have 3 convolutional layers and 3 pooling layers. We use a ke
 # Results
 
 
-
+Below is a measure of the training accuracy after 10 epochs...
 
 <p align="center">
   <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/10epochs_acc.png">
 </p>
 
+Below is a mesure of the training loss after 10 epochs...
+
 <p align="center">
   <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/10epochs_loss.png">
 </p>
 
+Below, we can see that for 10 epochs and 100% training accuracy, testing accuracy is 95%. This is due to overfitting from too many iterations. 
+
 <p align="center">
   <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/overfitting_10epohcs.png">
 </p>
+
+Below is the result of 4 passes through the network and 100% testing accuracy. 
+
+<p align="center">
+  <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/network_topology.png">
+</p>
+
 
 # Conclusion
 
