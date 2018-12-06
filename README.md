@@ -119,7 +119,7 @@ Below is the result of 4 passes through the network and 100% testing accuracy.
   <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/overfitting_10_epochs.png">
 </p>
 
-
+ 
 # Conclusion
 
 This model has proven to be applicable in a real time system. With only 2 passes through the network, 98% testing accuracy is achieved. In some cases, 100% is achieved, but the discrepancy is due to random weight intializations. If we set fixed weights, we could achieve 100% accuracy in 2 epochs, but our network will be biased. In order to consistently achieve 100% accuracy, 4 passes through the network are necessary. For a 3.5 gHz cpu, this takes roughly 1 minute and 30 seconds for a training set of 3,000 images. With a smaller dataset, faster training is possible, but there is no garuntee in accuracy. For 2 passes, the training time is about 45 seconds. 
