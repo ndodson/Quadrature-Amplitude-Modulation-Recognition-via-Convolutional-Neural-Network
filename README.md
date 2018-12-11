@@ -91,6 +91,14 @@ For this model, we have 3 convolutional layers and 3 pooling layers. We use a ke
   <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/network_topology.png">
 </p>
 
+We will follow a basic convolutional neural network architecture like below. We take an input image and apply a series of convolutional and maxpooling layers. We will apply an activation function, which will be discussed later, after each convolution. 
+
+<p align="center">
+  <img width="800" height="300" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/cnn.png">
+</p>
+
+
+
 # Activations
 
 For our CNN, I decided to use tanh activation and softmax loss. 
@@ -104,7 +112,7 @@ Softmax loss is given by
 Tanh activation is given by
 
 <p align="left">
-  <img width="400" height="100" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/tanh.png">
+  <img width="400" height="75" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/tanh.png">
 </p>
 
 
