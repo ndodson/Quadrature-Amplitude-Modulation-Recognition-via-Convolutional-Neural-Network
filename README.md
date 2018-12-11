@@ -95,11 +95,19 @@ For this model, we have 3 convolutional layers and 3 pooling layers. We use a ke
 
 For our CNN, I decided to use tanh activation and softmax loss. 
 
+Softmax loss is given by
+<p align="left">
+  <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/softmax.png
+">
+</p>
+
+
 Tanh activation is given by
 
-Softmax loss is given by
-\sigma (\mathbf {z} )_{j}={\frac {e^{z_{j}}}{\sum _{k=1}^{K}e^{z_{k}}}}    for j = 1, …, K.
-
+<p align="left">
+  <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/tanh.png
+">
+</p>
 
 
 
