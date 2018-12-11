@@ -112,7 +112,7 @@ We will follow a basic convolutional neural network architecture like below. We 
 
 
 
-For this model, we have 3 convolutional layers and 3 pooling layers. Convultion layer 1 applies 32 5 by 5 filters to the images. Layer 2 applies 50 5 by 5 filters to the image. Layer 3 applies 80 5 by 5 filters to the image. We use a kernel size of 5 and stride of 1. Dropout rate of 50% was added to avoid overfitting. The tensorboard visualization for our network is below. Output size of layer 1 is 64,64,32 with 832 trainable parameters. Output size of layer 2 is 13,13,50 with 40050 trainable parameters. Output size of layer 3 is 3,3,80 with 10080 trainable paremeters. The 2 fully connected layers after flattening will have output sizes of 1,512 with 41472 trainable parameters and 1,5 with 2565 trainable parameters. All together, there will be 184,999 trainable parameters.
+For this model, we have 3 convolutional layers and 3 pooling layers. Convultion layer 1 applies thirty-two 5x5 filters to the images. Layer 2 applies fifty 5x5 filters to the image. Layer 3 applies eighty 5x5 filters to the image. We use a kernel size of 5 and stride of 1. Dropout rate of 50% was added to avoid overfitting. The tensorboard visualization for our network is below. Output size of layer 1 is [64,64,32] with 832 trainable parameters. Output size of layer 2 is [13,13,50] with 40050 trainable parameters. Output size of layer 3 is [3,3,80] with 10080 trainable paremeters. The 2 fully connected layers after flattening will have output sizes of [1,512] with 41472 trainable parameters and [1,5] with 2565 trainable parameters. All together, there will be 184,999 trainable parameters.
 
 
 
