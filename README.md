@@ -132,6 +132,7 @@ Softmax loss is given by
   <img width="400" height="100" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/softmax.png">
 </p>
 
+We apply the exonential fucntion on each coordinate, divided by the sum of all coordinates.
 
 Tanh activation is given by
 
@@ -139,6 +140,16 @@ Tanh activation is given by
   <img width="400" height="75" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/tanh.png">
 </p>
 
+
+We will apply Adaptive Moment Estimation(Adam) update as our means of gradient descent. Running averages of both the gradients and the second moments of the gradients are used. 
+
+<p align="left">
+  <img width="400" height="75" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/Adam2.png">
+</p>
+
+<p align="left">
+  <img width="400" height="75" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/Adam.png">
+</p>
 
 
 # Results
