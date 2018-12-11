@@ -1,6 +1,6 @@
 ### Table of Contents
 
-- [What is Quadrature Amplitude Modulation?](#quadrature background)
+- [First, what is Quadrature Amplitude Modulation(QAM)?](#quadrature background)
 - [Constellations](#constellations)
 - [Interference](#interference)
 - [Quadrature](#quadrature)
