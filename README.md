@@ -148,7 +148,7 @@ We will apply Adaptive Moment Estimation(Adam) update as our means of gradient d
 </p>
 
 <p align="left">
-  <img width="400" height="75" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/Adam2.png">
+  <img width="400" height="250" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/Adam2.png">
 </p>
 
 
