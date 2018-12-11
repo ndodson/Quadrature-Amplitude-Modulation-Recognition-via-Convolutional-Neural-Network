@@ -5,7 +5,7 @@
 - [Interference](#interference)
 - [Goals](#goals)
 - [Dataset](#dataset)
-- [Network Topology](#network)
+- [Network Topology](#network topolgy)
 - [Activations](#activations)
 - [Results](#results)
 - [Conclusion](#conclusion)
