@@ -83,6 +83,17 @@ def one_hot_label(img):
 
 # Network Topology
 
+
+We will follow a basic convolutional neural network architecture like below. We take an input image and apply a series of convolutional and maxpooling layers. We will apply an activation function, which will be discussed later, after each convolution. 
+
+<p align="center">
+  <img width="800" height="300" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/cnn.png">
+</p>
+
+
+
+
+
 For this model, we have 3 convolutional layers and 3 pooling layers. We use a kernel size of 5 and stride of 1. Dropout rate of 50% was added to avoid overfitting. The tensorboard visualization for our network is below.
 
 
@@ -91,11 +102,6 @@ For this model, we have 3 convolutional layers and 3 pooling layers. We use a ke
   <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/network_topology.png">
 </p>
 
-We will follow a basic convolutional neural network architecture like below. We take an input image and apply a series of convolutional and maxpooling layers. We will apply an activation function, which will be discussed later, after each convolution. 
-
-<p align="center">
-  <img width="800" height="300" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/cnn.png">
-</p>
 
 
 
