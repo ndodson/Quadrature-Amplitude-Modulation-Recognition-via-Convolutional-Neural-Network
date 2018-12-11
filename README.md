@@ -3,9 +3,13 @@
 - [Quadrature Amplitude Modulation](#quadrature)
 - [Constellations](#constellations)
 - [Interference](#interference)
-- [Quadrature](#quadrature)
-- [Quadrature](#quadrature)
-- [Quadrature](#quadrature)
+- [Goals](#goals)
+- [Dataset](#dataset)
+- [Network Topology](#network)
+- [Activations](#goals)
+- [Results](#dataset)
+- [Conclusions](#goals)
+- [Credits](#dataset)
 
 
 
