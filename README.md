@@ -189,10 +189,13 @@ This model has proven to be applicable in a real time system. With only 2 passes
 
 # Credits
 
+"Convolutional Neural Network Arhcitecture"
 https://medium.com/@RaghavPrabhu/understanding-of-convolutional-neural-network-cnn-deep-learning-99760835f148
 
+"Activation Functions for Neural Networks"
 https://towardsdatascience.com/activation-functions-neural-networks-1cbd9f8d91d6
 
+"Quadrature Amplitdue Modulation"
 https://www.osapublishing.org/DirectPDFAccess/682707A0-9527-0F82-AAE75127A49BF218_369137/oe-25-15-17150.pdf?da=1&id=369137&seq=0&mobile=no
 
 Qinru Qiu CSE 400: Machine Intelligence with Deep Learning, Lecture 13. "Training Neural Networks"
