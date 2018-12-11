@@ -97,16 +97,14 @@ For our CNN, I decided to use tanh activation and softmax loss.
 
 Softmax loss is given by
 <p align="left">
-  <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/softmax.png
-">
+  <img width="400" height="100" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/softmax.png">
 </p>
 
 
 Tanh activation is given by
 
 <p align="left">
-  <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/tanh.png
-">
+  <img width="400" height="100" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/tanh.png">
 </p>
 
 
