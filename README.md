@@ -8,7 +8,7 @@
 - [Network Topology](#network)
 - [Activations](#activations)
 - [Results](#results)
-- [Conclusions](#conclusions)
+- [Conclusion](#conclusion)
 - [Credits](#credits)
 
 
