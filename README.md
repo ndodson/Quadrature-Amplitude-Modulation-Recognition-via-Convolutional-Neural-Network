@@ -79,7 +79,7 @@ Through our implementation, we hope to accurately predict the modulation scheme 
 
 # Dataset
 
-Our data consists of 5,000 images of 4qam, 8qam, 16qam, 32qam, and 64qam consatellations. Due to lack of abundant image data, the size of the dataset was increased by augmenting images. The operations used were rotations, shears, horizontal/vertical flips, noise, and blur. These constellations have SINR ranging from 10db to 30db. we will use one-hot-encoding to represent our data numerically. Then, we will resize and apply grayscale to our images. I chose to resize the images to 64*64.  
+Our data consists of 5,000 images of 4qam, 8qam, 16qam, 32qam, and 64qam consatellations. Due to lack of abundant image data, the size of the dataset was increased by augmenting images. The operations used were rotations, shears, horizontal/vertical flips, noise, and blur. These constellations have SINR ranging from -20db to 20db. we will use one-hot-encoding to represent our data numerically. Then, we will resize and apply grayscale to our images. I chose to resize the images to 64*64.  
 
 ```python
 
