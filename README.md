@@ -144,11 +144,11 @@ Tanh activation is given by
 We will apply Adaptive Moment Estimation(Adam) update as our means of gradient descent. Running averages of both the gradients and the second moments of the gradients are used. 
 
 <p align="left">
-  <img width="400" height="75" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/Adam2.png">
+  <img width="400" height="75" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/Adam.png">
 </p>
 
 <p align="left">
-  <img width="400" height="75" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/Adam.png">
+  <img width="400" height="75" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/Adam2.png">
 </p>
 
 
