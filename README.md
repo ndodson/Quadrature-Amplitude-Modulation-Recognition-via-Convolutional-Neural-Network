@@ -138,13 +138,13 @@ Below is a mesure of the training loss after 10 epochs...
   <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/10epochs_loss.png">
 </p>
 
-Below, we can see that for 10 epochs and 100% training accuracy, testing accuracy is 95%. This is due to overfitting from too many iterations. 
+Below, we can see that for 10 epochs, testing accuracy is 95%. This is due to overfitting from too many iterations. The red circle indicates the misclassified diagram.
 
 <p align="center">
   <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/overfitting_10_epochs.png">
 </p>
 
-Below is the result of 4 passes through the network and 100% testing accuracy. 
+Below is the result of 4 passes through the network and 100% testing accuracy. As you can see, diagrams with the red circle are the ones of most interest to us. The model is able to correctly classify 3 images that it has never seen before with very low SINR. We have now proven that a CNN can effectively classify the modulation schemes for very noisy conditions in a reasonable amount of time.
 
 <p align="center">
   <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/100%25test_acc.png">
