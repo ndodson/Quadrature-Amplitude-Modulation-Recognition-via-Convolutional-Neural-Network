@@ -6,10 +6,10 @@
 - [Goals](#goals)
 - [Dataset](#dataset)
 - [Network Topology](#network)
-- [Activations](#goals)
-- [Results](#dataset)
-- [Conclusions](#goals)
-- [Credits](#dataset)
+- [Activations](#activations)
+- [Results](#results)
+- [Conclusions](#conclusions)
+- [Credits](#credits)
 
 
 
