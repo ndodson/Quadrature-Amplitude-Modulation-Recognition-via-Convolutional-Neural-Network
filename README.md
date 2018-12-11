@@ -150,7 +150,7 @@ We will apply Adaptive Moment Estimation(Adam) update as our means of gradient d
 Here is an example code showing the Adam update. v estimates of the 1st moment (the mean). cache estimates the 2nd raw moment (variance) 
 
 <p align="center">
-  <img width="500" height="150" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/Adam.png">
+  <img width="700" height="150" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/Adam.png">
 </p>
 
 
