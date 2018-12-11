@@ -128,7 +128,7 @@ For this model, we have 3 convolutional layers and 3 pooling layers. We use a ke
 For our CNN, I decided to use tanh activation and softmax loss. 
 
 Softmax loss is given by
-<p align="left">
+<p align="center">
   <img width="400" height="100" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/softmax.png">
 </p>
 
@@ -136,21 +136,21 @@ We apply the exonential fucntion on each coordinate, divided by the sum of all c
 
 Tanh activation is given by
 
-<p align="left">
-  <img width="400" height="75" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/tanh.png">
+<p align="center">
+  <img width="500" height="75" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/tanh.png">
 </p>
 
 
 We will apply Adaptive Moment Estimation(Adam) update as our means of gradient descent. Running averages of both the gradients and the second moments of the gradients are used. Weight and Loss are given by w and L respectively. The "forgetting factors" are given by B1 and B2.
 
-<p align="left">
-  <img width="400" height="250" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/Adam2.png">
+<p align="center">
+  <img width="500" height="250" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/Adam2.png">
 </p>
 
 Here is an example code showing the Adam update. v estimates of the 1st moment (the mean). cache estimates the 2nd raw moment (variance) 
 
-<p align="left">
-  <img width="400" height="100" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/Adam.png">
+<p align="center">
+  <img width="500" height="150" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/Adam.png">
 </p>
 
 
