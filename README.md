@@ -132,7 +132,7 @@ Softmax loss is given by
   <img width="400" height="100" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/softmax.png">
 </p>
 
-We apply the exonential fucntion on each coordinate, divided by the sum of all coordinates.
+We apply the exonential function on each coordinate, divided by the sum of all coordinates.
 
 Tanh activation is given by
 
