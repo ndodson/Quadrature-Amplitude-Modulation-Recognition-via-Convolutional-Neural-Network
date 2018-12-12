@@ -15,7 +15,7 @@ import keras.backend as K
 train_data = '/Users/nickd/Desktop/train_set'
 test_data = '/Users/nickd/Desktop/test_set'
 
-def one_hot_label(img):
+def one_hot_label(img):             ##apply some one-hot encoding
     global ohl
     label = img.split('.')[0]
     if label == '4qam':
@@ -30,7 +30,7 @@ def one_hot_label(img):
         ohl = np.array([1,0,0,0,0])
     return ohl
 
-def train_data_with_label():
+def train_data_with_label():                    ##prepare training data
     train_images = []
     for i in tqdm(os.listdir(train_data)):
         path = os.path.join(train_data,i)
@@ -44,7 +44,7 @@ def train_data_with_label():
     shuffle(train_images)
     return train_images
 
-def test_data_with_label():
+def test_data_with_label():             ##prepare testing data
 
     test_images = []
     for i in tqdm(os.listdir(test_data)):
@@ -75,15 +75,18 @@ tst_lbl_data = np.array([i[1] for i in testing_images])
 
 model = Sequential()
 
+
+##pass through the network
+
 model.add(InputLayer(input_shape=[64,64,1]))
-model.add(Conv2D(filters=32,kernel_size=5,strides=1,padding='same',activation='relu'))
+model.add(Conv2D(filters=32,kernel_size=5,strides=1,padding='same',activation='tanh'))
 model.add(MaxPool2D(pool_size=5,padding='same'))
 
-model.add(Conv2D(filters=50,kernel_size=5,strides=1,padding='same',activation='relu'))
+model.add(Conv2D(filters=50,kernel_size=5,strides=1,padding='same',activation='tanh'))
 model.add(MaxPool2D(pool_size=5,padding='same'))
 
 
-model.add(Conv2D(filters=80,kernel_size=5,strides=1,padding='same',activation='relu'))
+model.add(Conv2D(filters=80,kernel_size=5,strides=1,padding='same',activation='tanh'))
 model.add(MaxPool2D(pool_size=5,padding='same'))
 
 
@@ -91,12 +94,12 @@ model.add(Dropout(0.25))
 
 
 model.add(Flatten())
-model.add(Dense(512,activation='relu'))
+model.add(Dense(512,activation='tanh'))
 model.add(Dropout(rate=0.5))
 model.add(Dense(5,input_shape=(5,),activation='softmax'))
 optimizer = Adam(lr=1e-3)
 
 model.compile(optimizer=optimizer,loss='categorical_crossentropy',metrics=['accuracy'])
-model.fit(x=tr_img_data,y=tr_lbl_data,epochs=50,batch_size=2)
+model.fit(x=tr_img_data,y=tr_lbl_data,epochs=4,batch_size=32)
 model.summary()
 
