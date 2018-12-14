@@ -12,8 +12,8 @@ import keras.backend as K
 
 
 
-train_data = '/Users/nickd/Desktop/train_set'
-test_data = '/Users/nickd/Desktop/test_set'
+train_data = '/../../..'
+test_data = '/../../..'
 
 def one_hot_label(img):             ##apply some one-hot encoding
     global ohl
