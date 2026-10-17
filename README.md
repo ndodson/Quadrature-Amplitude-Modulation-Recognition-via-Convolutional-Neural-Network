@@ -1,207 +1,128 @@
-### Table of Contents
+# QAM Modulation Classification with a Convolutional Neural Network
 
-- [Quadrature Amplitude Modulation](#quadrature)
-- [Constellations](#constellations)
-- [Interference](#interference)
-- [Goals](#goals)
-- [Dataset](#dataset)
-- [Network Topology](#network)
-- [Activations](#activations)
-- [Results](#results)
-- [Conclusion](#conclusion)
-- [Credits](#credits)
+Originally developed for **CSE 400: Machine Intelligence with Deep Learning**, this project explores the classification of quadrature amplitude modulation (QAM) schemes from constellation images using a compact convolutional neural network (CNN).
 
+The experiment considers five classes—4-QAM, 8-QAM, 16-QAM, 32-QAM, and 64-QAM—and investigates whether their spatial structure remains useful for classification under noisy conditions. This repository preserves the original implementation and experimental figures. The results below are historical observations, with limitations noted where the available code does not support independent verification.
 
+## Background
 
+QAM encodes information in the amplitudes of two orthogonal carrier components, conventionally called in-phase (I) and quadrature (Q). A constellation diagram represents the corresponding symbols in the I/Q plane. An M-point constellation carries log₂(M) bits per symbol; for example, 16-QAM carries four bits per symbol.
 
-
-
-# Quadrature-Amplitude-Modulation-Convolutional-Neural-Network
-
-
-Here we will implement a convolutional neural network to detect modulation schemes with low signal to noise ratio (SINR).
-We will train the network on constellation diagram images ranging from low to high interference.
-
-
-# First, what is Quadrature Amplitude Modulation(QAM)?
-
-
-
-Amplitude modulation is a technique used in communications engineering to transmit data. It transports 2 digital bitstreams by changing the amplitude and phase of 2 sub-carrier waves. These 2 sub-carrier waves will be out of phase with each other by 90 degrees. The advantage of employing modulation in our communications systems that these modulated waves will be be lower bandwidth and lower frequency as compared to the carrier frequency. Essentially, this makes it possible to push more data through the pipeline with increased efficiency. 
-
-
-
-# Constellations
-
-There are many different versions of QAM that are widely used in digital communication. Some of the most widely used are 4qam(or qpsk), 16qam, and 64qam. These numerical prefixes represent the number of constellation points in a constellation diagram like below. 
-
-
+Higher-order QAM offers greater spectral efficiency, but at a fixed average symbol energy its constellation points are more closely spaced. This generally requires a higher signal-to-noise ratio (SNR) to maintain a given error rate. Noise and channel impairments can obscure the constellation structure, making modulation classification more difficult.
 
 <p align="center">
-  <img width="460" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/16qam.75.png">
+  <img width="360" src="readme_images/16qam.75.png" alt="Example 16-QAM constellation image">
+  <img width="360" src="readme_images/64qam.7.png" alt="Example noisy 64-QAM constellation image">
 </p>
 
+This project treats modulation recognition as an image-classification problem. It operates on rendered constellation images rather than directly on time-domain I/Q samples.
 
+## Dataset and preprocessing
 
-# Interference
+The original project report describes approximately 5,000 constellation images across the five modulation classes, with a reported signal-to-interference-plus-noise ratio (SINR) range of −30 to +30 dB. Image augmentation was used to expand the dataset. The included augmentation script references rotation, horizontal and vertical flips, translation, noise, zoom, and blur.
 
-The symbol represents the state of the waveform for a fixed period. In the 16qam example, the number of bits per symbol is 4, as the points in each quadrant can be grouped into fours. The advantage of higher bits per symbol is that there are more points within the constellation, making it possible to transmit more bits through the pipeline. This greatly increases the efficiency of transmission for communications systems. The downside of the higher order schemes is that the points in the constellation are closer together, making them more susceptible to noise and cross-talk. 
+The training script:
 
+1. Reads the modulation class from the filename prefix, such as `16qam` in `16qam.example.png`.
+2. Loads each image in grayscale and resizes it to 64 × 64 pixels.
+3. Encodes the class as a five-element one-hot vector.
+4. Shuffles the images before training.
 
+The implementation uses pixel values without explicit normalization. The dataset, signal-generation procedure, SINR calculation, and original split manifest are not included. Consequently, the reported noise range and independence of the training and test sets cannot be verified from this repository alone. SNR and SINR are distinct quantities; the original report does not provide enough information to resolve how noise and interference were modeled.
 
+## Model architecture
 
+The model in `pre.py` uses three convolutional blocks followed by a fully connected classifier. Convolutions use a stride of 1 and `same` padding. Max-pooling layers use 5 × 5 windows, their default stride of 5, and `same` padding.
+
+| Layer | Output shape, excluding batch | Parameters |
+| --- | --- | ---: |
+| Grayscale input | 64 × 64 × 1 | 0 |
+| 5 × 5 convolution, 32 filters, tanh | 64 × 64 × 32 | 832 |
+| 5 × 5 max pooling | 13 × 13 × 32 | 0 |
+| 5 × 5 convolution, 50 filters, tanh | 13 × 13 × 50 | 40,050 |
+| 5 × 5 max pooling | 3 × 3 × 50 | 0 |
+| 5 × 5 convolution, 80 filters, tanh | 3 × 3 × 80 | 100,080 |
+| 5 × 5 max pooling | 1 × 1 × 80 | 0 |
+| Dropout, rate 0.25 | 1 × 1 × 80 | 0 |
+| Flatten | 80 | 0 |
+| Dense, 512 units, tanh | 512 | 41,472 |
+| Dropout, rate 0.50 | 512 | 0 |
+| Dense, 5 units, softmax | 5 | 2,565 |
+| **Total** | | **184,999** |
+
+Training uses Adam with a learning rate of 0.001, categorical cross-entropy loss, a batch size of 32, and four epochs. Softmax produces the class probabilities; categorical cross-entropy is the optimization objective.
+
+## Original experimental results
+
+The original report recorded the following classification accuracies:
+
+| Training epochs | Reported test accuracy |
+| ---: | ---: |
+| 2 | Approximately 98%, with some runs reported at 100% |
+| 4 | 100% |
+| 10 | 95% |
+
+These figures are retained as **historical reported results**, rather than independently reproduced benchmarks. The checked-in training script loads test images but does not evaluate the model or generate these accuracy summaries. The exact test-set size, split membership, random seeds, and per-run measurements are not available in the repository.
+
+The original report also recorded approximately 90 seconds of training for four epochs on 3,000 images using a 3.5 GHz CPU. This is an approximate historical timing, not a controlled hardware benchmark. Inference latency and end-to-end signal-processing throughput were not measured.
+
+### Preserved experimental figures
+
+Training accuracy from the original four-epoch experiment:
 
 <p align="center">
-  <img width="460" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/64qam.7.png">
+  <img width="800" src="readme_images/4epochs_acc.png" alt="Historical training accuracy plot for the four-epoch experiment">
 </p>
 
-
-
-
- 
-
-
-This is an example of a signal with low signal to noise ratio. As you can see, there is a lot of interference and it is difficult to tell the modulation scheme used. For this reason, the higher order methods are typically used when we know there is a high signal to noise ratio, resulting in less interference.
-
-
-# Why do we care about constellation diagrams?
-
-Constellation diagrams are important because they provide signal performance metrics of a communication system in a simple image. From the diagram, we can form an understanding of the modulation scheme, SINR, and signal preformance flaws. This data is conventionally analyized by an RF engineer, but in the development of intelligent systems and the software defined radio(SDR), we would like to automate this process for a real-time system. We will achieve this with a convolutional neural network.
-
-# Goals
-
-Through our implementation, we hope to accurately predict the modulation scheme used for low SINR constellations. Some of examples can be seen below. If possible, we would also like to train the model in as few epochs as possible and without a GPU, in order to simulate a real-time system without expensive hardware.
+Example predictions associated with the reported four-epoch result:
 
 <p align="center">
-  <img width="460" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/4qam.9.png">
+  <img width="800" src="readme_images/100%25test_acc.png" alt="Historical prediction examples associated with the reported 100 percent test accuracy">
 </p>
 
-
-# Dataset
-
-Our data consists of 5,000 images of 4qam, 8qam, 16qam, 32qam, and 64qam consatellations. Due to lack of abundant image data, the size of the dataset was increased by augmenting images. The operations used were rotations, shears, horizontal/vertical flips, noise, and blur. These constellations have SINR ranging from -30db to 30db. we will use one-hot-encoding to represent our data numerically. Then, we will resize and apply grayscale to our images. I chose to resize the images to 64*64.  
-
-```python
-
-def one_hot_label(img):
-    global ohl
-    label = img.split('.')[0]
-    if label == '4qam':
-        ohl = np.array([0,0,0,0,1])
-    elif label == '8qam':
-        ohl = np.array([0,0,0,1,0])
-    elif label == '16qam':
-        ohl = np.array([0,0,1,0,0])
-    elif label == '32qam':
-        ohl = np.array([0,1,0,0,0])
-    elif label == '64qam':
-        ohl = np.array([1,0,0,0,0])
-    return ohl
-```
-
-# Network Topology
-
-
-We will follow a basic convolutional neural network architecture like below. We take an input image and apply a series of convolutional and maxpooling layers. We will apply an activation function, which will be discussed later, after each convolution. 
+Example predictions associated with the reported ten-epoch result:
 
 <p align="center">
-  <img width="800" height="300" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/cnn.png">
+  <img width="800" src="readme_images/overfitting_10_epochs.png" alt="Historical prediction examples associated with the reported 95 percent test accuracy">
 </p>
 
+The difference between the four- and ten-epoch results does not, on its own, establish overfitting. That conclusion would require validation learning curves and repeated experiments with controlled data splits and random seeds.
 
+## Limitations and interpretation
 
+The original results suggest that a small CNN can learn discriminative structure in the constellation-image dataset used for this course project. They do not establish generalization to independent radio captures or reliable operation across the full reported SINR range.
 
+Important limitations include:
 
-For this model, we have 3 convolutional layers and 3 pooling layers. Convultion layer 1 applies thirty-two 5x5 filters to the images. Layer 2 applies fifty 5x5 filters to the image. Layer 3 applies eighty 5x5 filters to the image. We use a kernel size of 5 and stride of 1. Dropout rate of 50% was added to avoid overfitting. The tensorboard visualization for our network is below. Output size of layer 1 is [64,64,32] with 832 trainable parameters. Output size of layer 2 is [13,13,50] with 40050 trainable parameters. Output size of layer 3 is [3,3,80] with 10080 trainable paremeters. The 2 fully connected layers after flattening will have output sizes of [1,512] with 41472 trainable parameters and [1,5] with 2565 trainable parameters. All together, there will be 184,999 trainable parameters.
+- **Split independence:** The repository does not establish whether augmentation occurred before or after splitting the data. Related images appearing in both training and testing could inflate measured accuracy. A stronger evaluation would split by original signal realization or capture, keeping all derived images in the same partition.
+- **Noise-dependent performance:** Aggregate accuracy does not describe performance at individual SNR or SINR levels. Per-level accuracy, class counts, and confusion matrices would be needed to assess robustness under noisy conditions.
+- **Rendering effects:** Image classifiers may exploit plotting styles, scaling, or other rendering artifacts. Consistent rendering and evaluation on independently generated signals would help distinguish modulation recognition from dataset-specific shortcuts.
+- **Physical validity of augmentation:** Generic image transformations are not necessarily faithful models of radio-channel impairments. Their effects on class identity and signal statistics require validation.
+- **Model selection and uncertainty:** The original runs do not include a documented validation protocol, repeated-seed summaries, or uncertainty estimates. Comparisons among activations and training durations should therefore be treated as exploratory.
+- **Real-time operation:** Short training time does not demonstrate real-time inference. Such a claim would require measurements of inference latency, constellation construction, observation duration, and throughput on a specified platform.
 
+A follow-up study could compare this image-based approach with conventional signal-feature baselines and models trained directly on I/Q samples, using independent held-out signals and a reproducible evaluation protocol.
 
+## Repository contents and implementation status
 
-<p align="center">
-  <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/network_topology.png">
-</p>
+| Path | Description |
+| --- | --- |
+| `pre.py` | Image loading, label encoding, CNN construction, and training |
+| `data.py` | Command-line image augmentation script |
+| `readme_images/` | Constellation examples and figures from the original project |
 
+The code is a legacy course-project implementation and is **not runnable as supplied**:
 
+- `pre.py` contains placeholder training and test paths that must be replaced with dataset locations.
+- The dataset is not included.
+- `data.py` uses Python 2 print syntax and imports `counter` and `ops.*` modules that are not included.
+- The training script uses older Keras APIs, and no pinned dependency environment is provided.
+- Training runs at import time; model saving and test-set evaluation are not implemented in the supplied script.
 
+The training script imports NumPy, OpenCV, tqdm, TensorFlow, Keras, and Matplotlib. The augmentation script additionally imports scikit-image and the missing helper modules noted above. Reproducing the experiment would require restoring the data and dependencies, updating the legacy APIs, and adding an explicit evaluation workflow.
 
-# Activations
+## References and acknowledgments
 
-For our CNN, I decided to use tanh activation and softmax loss. 
-
-Softmax loss is given by
-<p align="center">
-  <img width="400" height="100" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/softmax.png">
-</p>
-
-We apply the exonential function on each coordinate, divided by the sum of all coordinates.
-
-Tanh activation is given by
-
-<p align="center">
-  <img width="500" height="75" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/tanh.png">
-</p>
-
-
-We will apply Adaptive Moment Estimation(Adam) update as our means of gradient descent. Running averages of both the gradients and the second moments of the gradients are used. Weight and Loss are given by w and L respectively. The "forgetting factors" are given by B1 and B2.
-
-<p align="center">
-  <img width="700" height="350" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/Adam2.png">
-</p>
-
-Here is an example code showing the Adam update. v estimates of the 1st moment (the mean). cache estimates the 2nd raw moment (variance) 
-
-<p align="center">
-  <img width="700" height="150" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/Adam.png">
-</p>
-
-
-# Results
-
-
-Below is a measure of the training accuracy after 4 epochs...
-
-<p align="center">
-  <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/4epochs_acc.png">
-</p>
-
-Below is a mesure of the training loss after 4 epochs...
-
-<p align="center">
-  <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/10epochs_loss.png">
-</p>
-
-Below, we can see that for 10 epochs, testing accuracy is 95%. This is due to overfitting from too many iterations. The red circle indicates the misclassified diagram.
-
-<p align="center">
-  <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/overfitting_10_epochs.png">
-</p>
-
-Below is the result of 4 passes through the network and 100% testing accuracy. As you can see, diagrams with the red circle are the ones of most interest to us. The model is able to correctly classify 3 images that it has never seen before with very low SINR. We have now proven that a CNN can effectively classify the modulation schemes for very noisy conditions in a reasonable amount of time.
-
-<p align="center">
-  <img width="800" height="460" src="https://github.com/ndodson/Quadrature-Amplitude-Modulation-Convolutional-Neural-Network/blob/master/readme_images/100%25test_acc.png">
-</p>
-
- 
-# Conclusion
-
-This model has proven to be applicable in a real time system. With only 2 passes through the network, 98% testing accuracy is achieved. In some cases, 100% is achieved, but the discrepancy is due to random weight intializations. If we set fixed weights, we could achieve 100% accuracy in 2 epochs, but our network will be biased. In order to consistently achieve 100% accuracy, 4 passes through the network are necessary. Other acitivation functions were implemented, such as ReLu and LReLu, but tanh gave the best results. Higher batchsize gave lower validation set accuracy. For a 3.5 gHz cpu, this takes roughly 1 minute and 30 seconds for a training set of 3,000 images. With a smaller dataset, faster training is possible, but there is no guarantee in accuracy. For 2 passes, the training time is about 45 seconds. In future iterations of this project, the model could easily be trained to not only predict the modulation scheme, but also give an estimation of the signal to noise ratio, given a prticular constellation diagram. 
-
-
-# Credits
-
-"Convolutional Neural Network Arhcitecture"
-https://medium.com/@RaghavPrabhu/understanding-of-convolutional-neural-network-cnn-deep-learning-99760835f148
-
-"Activation Functions for Neural Networks"
-https://towardsdatascience.com/activation-functions-neural-networks-1cbd9f8d91d6
-
-Dr. Qinru Qiu CSE 400: Machine Intelligence with Deep Learning, Lecture 13. "Training Neural Networks"
-
-
-
-
-
-
-
-
-
+- **CSE 400: Machine Intelligence with Deep Learning**, Dr. Qinru Qiu. Lecture 13: “Training Neural Networks.”
+- Raghav Prabhu, [“Understanding of Convolutional Neural Network (CNN)—Deep Learning”](https://medium.com/@RaghavPrabhu/understanding-of-convolutional-neural-network-cnn-deep-learning-99760835f148).
+- [“Activation Functions in Neural Networks”](https://towardsdatascience.com/activation-functions-neural-networks-1cbd9f8d91d6).
